@@ -44,9 +44,13 @@ const withMDX = createMDX({
 });
 
 // Merge MDX config with Next.js config
-const withPlugins = (config) => lingoCompiler.next({
-  sourceLocale: 'en',
-  targetLocales: ['es'],
-})(withMDX(config));
+const withPlugins = (config) =>
+  lingoCompiler.next({
+    sourceLocale: 'en',
+    targetLocales: ['es'],
+    models: {
+      '*:*': process.env.GROQ_MODEL || 'groq:mistral-saba-24b',
+    },
+  })(withMDX(config));
 
 export default withPlugins(nextConfig);

@@ -3,6 +3,7 @@
 import ThemeSwitch from '@/components/layout/ThemeSwitch';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { LocaleSwitcher } from 'lingo.dev/react/client';
 import { Code, Github } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -41,6 +42,7 @@ export default function Header() {
           ))}
         </nav>
         <div className='flex items-center gap-3'>
+          <LocaleSwitcher locales={['en', 'es']} />
           <ThemeSwitch />
           <Button asChild variant='ghost' size='icon' className='h-8 w-8'>
             <Link href='https://github.com/2wndrhs' target='_blank'>

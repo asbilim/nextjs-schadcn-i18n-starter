@@ -1,6 +1,7 @@
 import MotionDiv from '@/components/motion/MotionDiv';
 import { getPostsByYear } from '@/lib/posts';
 import { LingoComponent } from 'lingo.dev/react/rsc';
+import { loadDictionary } from '@/lib/lingo';
 import dayjs from 'dayjs';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -36,7 +37,12 @@ export default async function Page() {
   return (
     <main className='col-start-2'>
       <h2 className='mb-16 font-sans font-semibold'>
-        <LingoComponent $as='span' $fileKey='blog' $entryKey='title'>
+        <LingoComponent
+          $as='span'
+          $fileKey='blog'
+          $entryKey='title'
+          $loadDictionary={loadDictionary}
+        >
           Blog
         </LingoComponent>
       </h2>
