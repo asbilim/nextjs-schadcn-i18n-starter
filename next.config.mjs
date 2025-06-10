@@ -1,4 +1,5 @@
 import createMDX from '@next/mdx';
+import lingoCompiler from 'lingo.dev/compiler';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
@@ -43,4 +44,9 @@ const withMDX = createMDX({
 });
 
 // Merge MDX config with Next.js config
-export default withMDX(nextConfig);
+const withPlugins = (config) => lingoCompiler.next({
+  sourceLocale: 'en',
+  targetLocales: ['es'],
+})(withMDX(config));
+
+export default withPlugins(nextConfig);
