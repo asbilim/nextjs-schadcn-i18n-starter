@@ -1,5 +1,7 @@
 import Header from '@/components/layout/Header';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
+import { LingoProvider, LingoHtmlComponent } from 'lingo.dev/react/rsc';
+import { loadDictionary } from '@/lib/lingo';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
@@ -35,25 +37,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang='kr'
-      className='scrollbar scrollbar-track-transparent scrollbar-thumb-foreground/20 scrollbar-w-2 scrollbar-h-4 scroll-smooth'
-      suppressHydrationWarning
-    >
-      <body
-        className={`relative min-h-screen w-full ${geistSans.variable} ${geistMono.variable} ${pretendard.variable} antialiased`}
+    <LingoProvider loadDictionary={loadDictionary}>
+      <LingoHtmlComponent
+        className='scrollbar scrollbar-track-transparent scrollbar-thumb-foreground/20 scrollbar-w-2 scrollbar-h-4 scroll-smooth'
+        suppressHydrationWarning
       >
-        <ThemeProvider>
-          <Header />
-          <div className='pl-safe-left pr-safe-right py-16'>
-            <div className='mx-auto w-full max-w-screen-xl'>
-              <div className='flex flex-col gap-6 md:grid md:grid-cols-[1fr_640px_1fr]'>
-                {children}
+        <body
+          className={`relative min-h-screen w-full ${geistSans.variable} ${geistMono.variable} ${pretendard.variable} antialiased`}
+        >
+          <ThemeProvider>
+            <Header />
+            <div className='pl-safe-left pr-safe-right py-16'>
+              <div className='mx-auto w-full max-w-screen-xl'>
+                <div className='flex flex-col gap-6 md:grid md:grid-cols-[1fr_640px_1fr]'>
+                  {children}
+                </div>
               </div>
             </div>
-          </div>
-        </ThemeProvider>
-      </body>
-    </html>
+          </ThemeProvider>
+        </body>
+      </LingoHtmlComponent>
+    </LingoProvider>
   );
 }
