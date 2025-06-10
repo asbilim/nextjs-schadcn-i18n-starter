@@ -1,0 +1,17 @@
+{
+  "version": 0.1,
+  "files": {
+    "app/blog/page.tsx": {
+      "scopes": {
+        "10/declaration/body/1/argument/1/1": {
+          "type": "element",
+          "hash": "c073807c0f081ccbf22306f8f455a23d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Blog"
+        }
+      }
+    }
+  }
+}
