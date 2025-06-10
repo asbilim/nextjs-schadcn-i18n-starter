@@ -14,7 +14,7 @@ The `GROQ_MODEL` variable selects the AI model used for automatic translations.
 Run the build with:
 
 ```bash
-pnpm install
+npm install
 npm run build
 ```
 
